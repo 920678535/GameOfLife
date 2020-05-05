@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package net.phoneyou.covid19.bb.descriptor;
+
+import "amster/gbbinfra/DescriptorOptions.proto";
+import "net/phoneyou/covid19/bb/Common.proto";
+
+message GridInfo{
+    option (amster.gbbinfra.descriptor_type) = 110;
+    GridType.Enum type = 1;
+    RecoverType.Enum recovered_type = 2;
+}
+
+message Contact{
+    option (amster.gbbinfra.descriptor_type) = 106;
+    uint32 degree = 1; // 非一般接触度
+    bool special_degree = 2; // TODO should not be here
+}
+
+message Position{
+    option (amster.gbbinfra.descriptor_type) = 102;
+    int32 x = 1;
+    int32 y = 2;
+}
+
+message InfectDuration{
+    option (amster.gbbinfra.descriptor_type) = 103;
+    float elapsed_sec = 1; // 传染周期计时
+    uint32 trigger_cnt = 2; // 触发次数
+    float progress = 3; // 进程
+}
+
+message TreatmentDuration{
+    option (amster.gbbinfra.descriptor_type) = 104;
+    float elapsed_sec = 1; // 疗程治疗时间
+    uint32 trigger_cnt = 2; // 触发次数
+    float progress = 3; // 进程
+}
+
+message SpontaneousActiveDuration{
+    option (amster.gbbinfra.descriptor_type) = 105;
+    float elapsed_sec = 1; // 疑似观察时间
+    uint32 trigger_cnt = 2; // 触发次数
+    float progress = 3; // 进程
+}
+
+message IncubationDuration{
+    option (amster.gbbinfra.descriptor_type) = 107;
+    float elapsed_sec = 1; // 疑似观察时间
+    uint32 trigger_cnt = 2; // 触发次数
+    float progress = 3; // 进程
+}
+
+message IncubationInfectDuration{
+    option (amster.gbbinfra.descriptor_type) = 109;
+    float elapsed_sec = 1; // 疑似观察时间
+    uint32 trigger_cnt = 2; // 触发次数
+    float progress = 3; // 进程
+}

@@ -1,0 +1,77 @@
+{
+ "bbclient_config": {
+  "accepted_tickmodes": [
+   "Simulation",
+   "DirectEditing"
+  ]
+ },
+ "bbcenter_config": {
+  "service": "LMDB",
+  "lmdb": {
+   "db_path": "../share/amster/lmdb/bbs"
+  }
+ },
+ "notification_config": {
+  "service": "NNG"
+ },
+ "gbbinfra_config": {
+  "bbs": [
+   {
+    "dll_path": "AMSTERBB"
+   },
+   {
+    "dll_path": "COVID-19BB"
+   }
+  ]
+ },
+ "agent_config": {
+  "coroutine": true,
+  "agents": [
+  {
+   "name": "初始化服务",
+   "priority": 100,
+   "provider_name": "COVID-19/ScenarioInitAgent",
+   "accepted_tickmodes": ["DirectEditing"]
+  },
+  {
+   "name": "SEIR",
+   "priority": 0,
+   "accepted_tickmodes": ["Simulation"],
+   "entity_agent_extension":{
+     "accepted_names":["Grid"],
+     "sim_model": {
+      "providers": [
+       {
+        "dll_path": "COVID-19/SEIRSim",
+        "arg_options":[
+        ],
+        "sim_options": {
+         "SEIR": {
+          "coroutine": true,
+          "display_name": "SEIR传染模拟"
+         }
+        }
+       }
+      ]
+     }
+   }
+  }
+  ]
+ },
+ "log_config": {
+  "active": true,
+  "ignore_levels": [
+   "DEBUG"
+  ],
+  "console": {
+   "ignore_levels": [
+    "DEBUG"
+   ]
+  },
+  "rotating": {
+   "file_path": "../share/amster/logs/as-COVID19Agent",
+   "max_files": 3,
+   "file_max_size": 1048576
+  }
+ }
+}

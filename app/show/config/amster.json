@@ -1,0 +1,32 @@
+{
+    "bbclient_config": {
+        "ticktock_verbose": false,
+        "perf_options":{
+            "auto_adjust_update_interval": true,
+            "parallel_pull_descriptor" : true,
+            "max_descriptor_pull_cnt_once" : 200,
+        },
+        "gc_options":{
+            "parallel_mark" : true
+        }
+    },
+    "bbcenter_config": {
+        "service": "LMDB",
+        "lmdb": {
+            "db_path": "$(AMSTERFWK)/share/amster/lmdb/bbs"
+        }
+    },
+    "notification_config": {
+        "service": "NNG"
+    },
+    "gbbinfra_config": {
+        "bbs": [
+            {
+                "dll_path":"AMSTERBBQt"
+            },
+            {
+                "dll_path":"COVID-19BBQt"
+            }
+        ]
+    }
+}

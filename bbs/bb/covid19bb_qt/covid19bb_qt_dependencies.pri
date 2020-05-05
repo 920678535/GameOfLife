@@ -1,0 +1,10 @@
+AMSTER_LIB_NAME = COVID-19BBQt
+
+AMSTER_LIB_DEPENDS += \
+    amsterqt \
+
+win32{
+    DEFINES += COVID19QT_GENERATOR_DLLEXPORT=__declspec(dllimport)
+}else{
+    DEFINES += COVID19QT_GENERATOR_DLLEXPORT=
+}

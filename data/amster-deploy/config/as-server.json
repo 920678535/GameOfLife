@@ -1,0 +1,10 @@
+{
+    "agent_launchers": [
+        {
+            "progress_name":"as-COVID19Agent",
+            "enable":true,
+            "configure_file": "Agents/as-COVID19Agent.json"
+        }
+    ]
+}
+

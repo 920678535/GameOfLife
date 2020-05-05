@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+package net.phoneyou.covid19.bb.message;
+
+import "amster/gbbinfra/MessageOptions.proto";
+import "net/phoneyou/covid19/bb/Common.proto";
+message SyncDurationTime{
+    bool enable = 1;
+}
+
+message GenerateACity{
+    Request request = 1;
+    uint32 center_id = 2;
+    uint32 radius = 3;
+    uint32 min_degree = 4;
+    uint32 max_degree = 5;
+}
+
+message AroundCells{
+    Request request = 1;
+    uint32 center_id = 2;
+    uint32 radius = 3;
+}
+message AroundCellsResponse{
+    message CircleCells{
+        uint32 radius = 1;
+        repeated uint32 ids = 2;
+    }
+    Response response = 1;
+    repeated CircleCells circle_cells = 2;
+}
+
+message ChangeCellStaus{
+    Request request = 1;
+    uint32 met_id = 2;
+    GridType.Enum type = 3;
+    RecoverType.Enum recovered_type = 4;
+    uint32 radius = 5;
+}
+
+message ResetAllCells{
+    Request request = 1;
+    GridType.Enum type = 2;
+}
+
+message ChangeDimensions{
+    Request request = 1;
+    uint32 cell_x = 2;
+    uint32 cell_y = 3;
+}
+
+message DimensionsChanged{
+    uint32 cell_x = 1;
+    uint32 cell_y = 2;
+}
+
+message LemologyModelInited{
+}
+
+message UpdateLemologyModel{
+    enum Option{
+        ChangeIncubationTransmissionRate = 0;
+        ChangeRecoverRate = 1;
+        ChangeImmunityRate = 2;
+        ChangeDeathRate = 3;
+        ChangeTransmissionRate = 4;
+        ChangeSpontaneousActivationRate = 5;
+        ChangeIncubationInfectedRate = 6;
+        ChangeTreatmentDuration = 7;
+        ChangeInfectDuration = 8;
+        ChangeIncubationInfectDuration = 9;
+        ChangeIncubationDuration = 10;
+        ChangeSpontaneousActivationDuration = 11;
+        ChangeSISModel = 12;
+        ChangeContactDegree = 13;
+        ChangeSyncDurationTime = 14;
+    }
+    Request request = 1;
+    DurationOptions duration = 2;
+    RateOptions rate = 3;
+    bool sis_model = 4; // 采用SIS模式，没有Removed状态
+    uint32 contact_degree = 5;
+    repeated Option options = 6;
+    bool sync_duration_time = 7;
+}
+
+message ScenarioInit{
+    Request request = 1;
+
+    uint32 cell_x = 2; // 规模x
+    uint32 cell_y = 3; // 规模y
+    repeated CellPos infected_cells = 4; // 初始被感染者
+    repeated CellPos immunity_cells = 5; // 初始免疫者
+    uint32 contact_degree = 6;// 感染者的接触系数[0,8]
+    message CellDegree{
+        CellPos pos = 1;
+        uint32 degree = 2;
+    }
+    repeated CellDegree cell_degrees = 7; // cell的接触系数
+    DurationOptions duration = 8;
+    RateOptions rate = 9;
+    bool sis_model = 14; // 采用SIS模式，没有Removed状态
+    bool sync_duration_time = 10;
+}

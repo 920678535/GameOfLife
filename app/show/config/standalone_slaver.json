@@ -1,0 +1,71 @@
+{
+    "bbclient_config": {
+        "visitor_options":{
+            "entity_options":{
+                "client_options":{
+                    "offline_reset":false
+                }
+            }
+        },
+        "ticktock_verbose": false,
+        "perf_options":{
+            "auto_adjust_update_interval": true,
+            "parallel_pull_descriptor" : true,
+            "max_descriptor_pull_cnt_once" : 200,
+        },
+        "gc_options":{
+            "parallel_mark" : true
+        }
+    },
+    "bbcenter_config": {
+        "service": "INPROC"
+    },
+    "notification_config": {
+        "service": "NNG"
+    },
+    "gbbinfra_config": {
+        "bbs": [
+            {
+                "dll_path":"AMSTERBBQt"
+            },
+            {
+                "dll_path":"COVID-19BBQt"
+            }
+        ]
+    },
+    "enable_gateway": true,
+    "gateway_config": {
+        "service_conf": {
+            "inside_pub_pipe_count": 5,
+            "pub_min_duration_us": 1000,
+            "dds_backend": "OpenDDS",
+            "private_dds_domain": 101,
+            "host_name": "0.0.0.0",
+            "enable_bbcache": true,
+            "enable_outside_rpc": true,
+            "outside_heartbeat_interval_msec": 1000,
+            "outside_node_timeout_msec": 6000,
+            "inside_heartbeat_interval_msec": 100,
+            "inside_client_timeout_msec": 1000,
+            "service_parallel": 128,
+            "bbcache_service_parallel": 128,
+            "debug_verbose": 1,
+            "print_node_info_interval_msec":1000
+        }
+    },
+    "enable_master": true,
+    "master_config": {
+        "slaver": true,
+        "enable_simulation": true,
+        "replay_only": false,
+        "enable_replay": false,
+        "start_now": true,
+        "bbproxy": true,
+        "master_config": {
+            "check_descriptor_duplicate": false
+        }
+    },
+    "enable_launcher": false,
+    "enable_aar": false,
+    "local": false
+}

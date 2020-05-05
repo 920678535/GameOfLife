@@ -1,0 +1,4 @@
+module net.phoneyou.COVID19.BB
+plugin covid19bbplugin
+typeinfo plugins.qmltypes
+

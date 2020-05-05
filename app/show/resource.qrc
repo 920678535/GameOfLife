@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qtquickcontrols2.conf</file>
+        <file>qml/main.qml</file>
+        <file>config/amster.json</file>
+        <file>config/standalone.json</file>
+        <file>config/standalone_master.json</file>
+        <file>config/standalone_slaver.json</file>
+    </qresource>
+</RCC>
