@@ -1,4 +1,4 @@
-URI = net.phoneyou.COVID19.BB.Templates
+URI = net.phoneyou.LULU.BB.Templates
 
 API_VER = 1.0
 
@@ -9,11 +9,11 @@ include($$PWD/../../../../amster-config.pri)
 BBS_PROTO_DIR = $$PWD/../../../protos
 
 PROTO_FILES += \
-    $$BBS_PROTO_DIR/net/phoneyou/covid19/bb/Messages.proto \
-    $$BBS_PROTO_DIR/net/phoneyou/covid19/bb/Entities.proto \
-    $$BBS_PROTO_DIR/net/phoneyou/covid19/bb/Common.proto \
-    $$BBS_PROTO_DIR/net/phoneyou/covid19/bb/Descriptors.proto \
-    $$BBS_PROTO_DIR/net/phoneyou/covid19/bb/SingletonDescriptors.proto \
+    $$BBS_PROTO_DIR/net/phoneyou/lulu/bb/Messages.proto \
+    $$BBS_PROTO_DIR/net/phoneyou/lulu/bb/Entities.proto \
+    $$BBS_PROTO_DIR/net/phoneyou/lulu/bb/Common.proto \
+    $$BBS_PROTO_DIR/net/phoneyou/lulu/bb/Descriptors.proto \
+    $$BBS_PROTO_DIR/net/phoneyou/lulu/bb/SingletonDescriptors.proto \
 
 MODULE_QUALIFIERS = import net.phoneyou.AMSTER.PBControls 1.0;
 

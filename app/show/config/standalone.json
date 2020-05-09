@@ -29,7 +29,7 @@
                 "dll_path":"AMSTERBBQt"
             },
             {
-                "dll_path":"COVID-19BBQt"
+                "dll_path":"LULUBBQt"
             }
         ]
     },
@@ -74,7 +74,7 @@
          {
           "name": "初始化服务",
           "priority": 100,
-          "provider_name": "COVID-19/ScenarioInitQtAgent",
+          "provider_name": "LULU/ScenarioInitQtAgent",
           "accepted_tickmodes": ["DirectEditing"]
          },
          {
@@ -86,13 +86,13 @@
             "sim_model": {
              "providers": [
               {
-               "dll_path": "COVID-19/SEIRQtSim",
+               "dll_path": "LULU/SEIRQtSim",
                "arg_options":[
                ],
                "sim_options": {
                 "SEIR": {
                  "coroutine": true,
-                 "display_name": "SEIR传染模拟"
+                 "display_name": "SEIR预测模拟"
                 }
                }
               }

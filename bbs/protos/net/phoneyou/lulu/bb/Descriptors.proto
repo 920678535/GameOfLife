@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package net.phoneyou.lulu.bb.descriptor;
+
+import "amster/gbbinfra/DescriptorOptions.proto";
+import "net/phoneyou/lulu/bb/Common.proto";
+
+message CellInfo{
+    option (amster.gbbinfra.descriptor_type) = 110;
+    CellStaus.Enum staus = 1;
+}
+
+message Position{
+    option (amster.gbbinfra.descriptor_type) = 102;
+    int32 x = 1;
+    int32 y = 2;
+}

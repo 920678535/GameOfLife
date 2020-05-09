@@ -22,41 +22,44 @@ TRANSLATIONS += \
     i18n/show_zh_CN.ts \
     i18n/show_zh_CN.qm \
 
-#AMSTER_SDK_PATH = $$(AMSTERFWK)
+RC_ICONS = logo.ico
+#RC_FILE = logo.rc
+
+AMSTER_SDK_PATH = $$(AMSTERFWK)
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
-#QML_IMPORT_PATH = $$AMSTER_SDK_PATH/qml
+QML_IMPORT_PATH = $$AMSTER_SDK_PATH/qml
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
-#QML_DESIGNER_IMPORT_PATH =
+QML_DESIGNER_IMPORT_PATH =
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-#AMSTER_LIB_DEPENDS += amsterqt
-#include($$AMSTER_SDK_PATH/amster.pri)
+AMSTER_LIB_DEPENDS += amsterqt
+include($$AMSTER_SDK_PATH/amster.pri)
 
-#DEFINES += \
-#    DATA_PATH=\\\"$$PWD\\\" \
+DEFINES += \
+    DATA_PATH=\\\"$$PWD\\\" \
 
-#INCLUDEPATH += \
-#    $$AMSTER_SDK_PATH/sdk/protos/generate_files/qt \
-#    $$AMSTER_SDK_PATH/sdk/protos/generate_files/cpp
+INCLUDEPATH += \
+    $$AMSTER_SDK_PATH/sdk/protos/generate_files/qt \
+    $$AMSTER_SDK_PATH/sdk/protos/generate_files/cpp
 
-#PARTY_LIBS += \
-#    protobuf \
-#    g3logwrapper \
+PARTY_LIBS += \
+    protobuf \
+    g3logwrapper \
 
-#linux{
-#    PARTY_LIBS += \
-#        opendds \
-#        nng \
-#        boost
+linux{
+    PARTY_LIBS += \
+        opendds \
+        nng \
+        boost
 
-#    BOOST_LIBS += filesystem system
-#}
+    BOOST_LIBS += filesystem system
+}
 
-#USE_PROTOBUF_QT = 1
-#include($$(PPM_HOME)/ppm.pri)
+USE_PROTOBUF_QT = 1
+include($$(PPM_HOME)/ppm.pri)

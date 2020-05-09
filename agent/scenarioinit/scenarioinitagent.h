@@ -7,8 +7,8 @@
 using namespace amster::agent;
 using namespace amster::gbb;
 
-#include <net/phoneyou/covid19/bb/Common.pb.h>
-namespace bb = net::phoneyou::covid19::bb;
+#include <net/phoneyou/lulu/bb/Common.pb.h>
+namespace bb = net::phoneyou::lulu::bb;
 
 class ScenarioInitAgent : public AgentBase {
 public:
@@ -17,14 +17,9 @@ public:
     // AgentBase interface
 public:
     void initialize() override;
+
 private:
-    void updateDefaultDegree(uint32_t _newDegree);
-    void updateGridType(bb::GridType::Enum _type);
-    void clearDurations();
-    using CircleCell = std::vector<EntityId>;
-    std::vector<CircleCell> rangeCells(
-            EntityId _center,
-            uint32_t _radius);
+
 };
 
 #endif // SCENARIOINITAGENT_H

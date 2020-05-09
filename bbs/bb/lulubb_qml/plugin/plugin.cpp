@@ -37,19 +37,19 @@ class MyPlugin : public QQmlExtensionPlugin {
 public:
     void registerTypes(const char* uri)
     {
-        Q_ASSERT(QLatin1String(uri) == QStringLiteral("net.phoneyou.COVID19.BB"));
+        Q_ASSERT(QLatin1String(uri) == QStringLiteral("net.phoneyou.LULU.BB"));
 
         int versionMajor = 1;
         int versionMinor = 0;
 
         // register types
-        FOR_EACH_NET_PHONEYOU_COVID19_BB_MESSAGES_MESSAGE_TEMPLATE(REGISTER_TYPE_WITH_NAME)
+        FOR_EACH_NET_PHONEYOU_LULU_BB_MESSAGES_MESSAGE_TEMPLATE(REGISTER_TYPE_WITH_NAME)
         qmlRegisterSingletonType<NotificationSingleton>(uri, versionMajor, versionMinor, "Notification", accessor_notification_provider<NotificationSingleton>);
 
-        FOR_EACH_NET_PHONEYOU_COVID19_BB_COMMON_MESSAGE_TEMPLATE(REGISTER_TYPE_WITH_NAME)
-        FOR_EACH_NET_PHONEYOU_COVID19_BB_DESCRIPTORS_MESSAGE_TEMPLATE(REGISTER_TYPE_WITH_NAME)
-        FOR_EACH_NET_PHONEYOU_COVID19_BB_ENTITIES_MESSAGE_TEMPLATE(REGISTER_TYPE_WITH_NAME)
-        FOR_EACH_NET_PHONEYOU_COVID19_BB_SINGLETONDESCRIPTORS_MESSAGE_TEMPLATE(REGISTER_TYPE_WITH_NAME)
+        FOR_EACH_NET_PHONEYOU_LULU_BB_COMMON_MESSAGE_TEMPLATE(REGISTER_TYPE_WITH_NAME)
+        FOR_EACH_NET_PHONEYOU_LULU_BB_DESCRIPTORS_MESSAGE_TEMPLATE(REGISTER_TYPE_WITH_NAME)
+        FOR_EACH_NET_PHONEYOU_LULU_BB_ENTITIES_MESSAGE_TEMPLATE(REGISTER_TYPE_WITH_NAME)
+        FOR_EACH_NET_PHONEYOU_LULU_BB_SINGLETONDESCRIPTORS_MESSAGE_TEMPLATE(REGISTER_TYPE_WITH_NAME)
 
         qmlRegisterType<EntityCast>(uri, versionMajor, versionMinor, "EntityCast");
         qmlRegisterSingletonType<EntityCastSingleton>(uri, versionMajor, versionMinor, "Cast", entity_cast_provider<EntityCastSingleton>);

@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include <net/phoneyou/covid19/bb/Messages.pb.h>
-#include <net/phoneyou/covid19/bb/Descriptors.pb.h>
-#include <net/phoneyou/covid19/bb/SingletonDescriptors.pb.h>
-#include <net/phoneyou/covid19/bb/Entities.pb.h>
+#include <net/phoneyou/lulu/bb/Messages.pb.h>
+#include <net/phoneyou/lulu/bb/Descriptors.pb.h>
+#include <net/phoneyou/lulu/bb/SingletonDescriptors.pb.h>
+#include <net/phoneyou/lulu/bb/Entities.pb.h>
 
 #include <g3logwrapper/log.h>
 #include <gbb/gbb_constants.h>
@@ -16,7 +16,7 @@
 
 using namespace amster;
 using namespace amster::gbbinfra;
-using namespace net::phoneyou::covid19::bb;
+using namespace net::phoneyou::lulu::bb;
 
 template <class T>
 T* gbbupper_cast(amster::gbbinfra::EntityBase* _entity)
@@ -55,12 +55,11 @@ bool gbbupper_judge(amster::gbbinfra::EntityBase* _entity)
     return _super != Q_NULLPTR;
 }
 // register rpc service to qml in this bb
-#define FOR_EACH_NET_PHONEYOU_COVID19_BB_MESSAGE_RPC_REGISTER_TEMPLATE(F) \
-    F("scenario_init", net::phoneyou::covid19::bb::message::ScenarioInit, scenario_init) \
-    F("change_cell_status", net::phoneyou::covid19::bb::message::ChangeCellStaus, change_cell_status) \
-    F("update_lemology_model", net::phoneyou::covid19::bb::message::UpdateLemologyModel, update_lemology_model) \
-    F("reset_all_cells", net::phoneyou::covid19::bb::message::ResetAllCells, reset_all_cells) \
-    F("generate_a_city", net::phoneyou::covid19::bb::message::GenerateACity, generate_a_city) \
+#define FOR_EACH_NET_PHONEYOU_LULU_BB_MESSAGE_RPC_REGISTER_TEMPLATE(F) \
+    F("scenario_init", net::phoneyou::lulu::bb::message::ScenarioInit, scenario_init) \
+    F("change_cell_status", net::phoneyou::lulu::bb::message::ChangeCellStaus, change_cell_status) \
+    F("reset_all_cells", net::phoneyou::lulu::bb::message::ResetAllCells, reset_all_cells) \
+    F("generate_a_room", net::phoneyou::lulu::bb::message::GenerateARoom, generate_a_room) \
 
 #define REGISTER_TYPE_WITH_NAME(T, NAME) \
     qmlRegisterUncreatableType<T>(uri, versionMajor, versionMinor, #NAME, QString::fromLatin1("descriptor cannot be created by qml."));
@@ -176,10 +175,10 @@ class EntityCast : public QObject {
     Q_OBJECT
     // generated cast property
     Q_PROPERTY(QObject* from READ attachedEntity WRITE setAttachedEntity NOTIFY attachedEntityChanged)
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_ENTITIES_MESSAGE_TEMPLATE(DEFINE_ENTITY_PROPERTY)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_ENTITIES_MESSAGE_TEMPLATE(DEFINE_ENTITY_PROPERTY)
 
 public:
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_ENTITIES_MESSAGE_TEMPLATE(DEFINE_ENTITY_CAST)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_ENTITIES_MESSAGE_TEMPLATE(DEFINE_ENTITY_CAST)
 
 public:
     EntityCast(QObject* parent = Q_NULLPTR);
@@ -200,9 +199,9 @@ class EntityCastSingleton : public QObject {
     Q_OBJECT
 public:
 
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_ENTITIES_MESSAGE_TEMPLATE(DEFINE_ENTITY_CAST_SINGLETON)
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_ENTITIES_MESSAGE_TEMPLATE(DEFINE_JUDGE_ENTITY_CAST_SINGLETON)
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_COMMON_ENUM_TEMPLATE(DEFINE_ENUM_NAME_SINGLETON)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_ENTITIES_MESSAGE_TEMPLATE(DEFINE_ENTITY_CAST_SINGLETON)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_ENTITIES_MESSAGE_TEMPLATE(DEFINE_JUDGE_ENTITY_CAST_SINGLETON)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_COMMON_ENUM_TEMPLATE(DEFINE_ENUM_NAME_SINGLETON)
 };
 
 class NotificationSingleton : public QObject {
@@ -213,12 +212,12 @@ public:
 
 public:
     // 发送message
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_MESSAGES_MESSAGE_TEMPLATE(DEFINE_PUBLISH_MESSAGE)
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_MESSAGES_MESSAGE_TEMPLATE(DEFINE_SUBSCRIBE_MESSAGE)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_MESSAGES_MESSAGE_TEMPLATE(DEFINE_PUBLISH_MESSAGE)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_MESSAGES_MESSAGE_TEMPLATE(DEFINE_SUBSCRIBE_MESSAGE)
 
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_MESSAGES_MESSAGE_TEMPLATE(DEFINE_LISTEN_MESSAGE)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_MESSAGES_MESSAGE_TEMPLATE(DEFINE_LISTEN_MESSAGE)
 
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_MESSAGE_RPC_REGISTER_TEMPLATE(DEFINE_RPC_MESSAGE)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_MESSAGE_RPC_REGISTER_TEMPLATE(DEFINE_RPC_MESSAGE)
 
     // 将descriptor作为message发送
     Q_INVOKABLE void pubDescriptorAsMessage(
@@ -278,20 +277,20 @@ private:
 //单例描述子导出
 class GlobalSingleton : public QObject {
     Q_OBJECT
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_SINGLETONDESCRIPTORS_MESSAGE_TEMPLATE(DEFINE_SINGLETON_DESCRIPTOR_PROPERTY)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_SINGLETONDESCRIPTORS_MESSAGE_TEMPLATE(DEFINE_SINGLETON_DESCRIPTOR_PROPERTY)
 public:
     GlobalSingleton(amster::qt::BBAccessor* gbbAccessor_);
 
 public:
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_SINGLETONDESCRIPTORS_MESSAGE_TEMPLATE(DEFINE_SINGLETON_DESCRIPTOR)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_SINGLETONDESCRIPTORS_MESSAGE_TEMPLATE(DEFINE_SINGLETON_DESCRIPTOR)
 
 signals:
-    FOR_EACH_NET_PHONEYOU_COVID19_BB_SINGLETONDESCRIPTORS_MESSAGE_TEMPLATE(DEFINE_SINGLETON_DESCRIPTOR_SIGNAL)
+    FOR_EACH_NET_PHONEYOU_LULU_BB_SINGLETONDESCRIPTORS_MESSAGE_TEMPLATE(DEFINE_SINGLETON_DESCRIPTOR_SIGNAL)
 
 private slots:
     void initSingletonDescriptorSignal()
     {
-        FOR_EACH_NET_PHONEYOU_COVID19_BB_SINGLETONDESCRIPTORS_MESSAGE_TEMPLATE(DEFINE_EMIT_SINGLETON_DESCRIPTOR_SIGNAL)
+        FOR_EACH_NET_PHONEYOU_LULU_BB_SINGLETONDESCRIPTORS_MESSAGE_TEMPLATE(DEFINE_EMIT_SINGLETON_DESCRIPTOR_SIGNAL)
     }
 
 private:

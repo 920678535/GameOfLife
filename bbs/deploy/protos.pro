@@ -9,7 +9,7 @@ STATIC_INSTALL_BASE = $$AMSTER_INSTALL_SDK_PATH/protos
 
 
 DATA_DIRS = \
-    net/phoneyou/covid19/bb \
+    net/phoneyou/lulu/bb \
 
 for(data_dir, DATA_DIRS) {
     files = $$files($$STATIC_BASE/$$data_dir/*, true)

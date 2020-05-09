@@ -1,0 +1,61 @@
+syntax = "proto3";
+package net.phoneyou.lulu.bb;
+
+//import "amster/bb/Common.proto";
+
+message DescriptorType{
+    enum Enum{
+        InvalidDescriptor = 0;
+        Position = 102;
+        CellInfo = 110;
+        Statistics = 2001;
+        Dimensions = 2002;
+    }
+}
+
+message EntityType {
+    enum Enum{
+        Invalid = 0;
+        Cell = 101;
+    }
+}
+
+message CellStaus{
+    enum Enum{
+        Invalid = 0; // 无效
+        Death = 1; // 死亡
+        Survival = 2; // 存活
+    }
+}
+
+message ResponseCode{
+    enum Enum{
+        Successed = 0;
+        Failed = 1;
+    }
+}
+
+// for RPC common request
+message Request{
+}
+
+// for RPC cpmmon response
+message Response{
+    ResponseCode.Enum code = 1;
+}
+
+message DurationOptions{
+    enum Enum{
+        Treatment = 0;
+        Infect = 1;
+        IncubationInfect = 2;
+        Incubation = 3;
+        SpontaneousActivation = 4;
+    }
+    float treatment = 2; // 疗程
+    float infect = 20; // 潜伏期确诊概率
+    float incubation_infect = 21;// 潜伏期间传染周期
+    float incubation = 22; // 潜伏确诊周期
+    float spontaneous_activation = 23; // 潜伏确诊周期
+
+}

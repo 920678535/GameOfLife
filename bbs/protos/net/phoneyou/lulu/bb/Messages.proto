@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package net.phoneyou.lulu.bb.message;
+
+import "amster/gbbinfra/MessageOptions.proto";
+import "net/phoneyou/lulu/bb/Common.proto";
+
+// 生成一个活动空间
+message GenerateARoom{
+    Request request = 1;
+    uint32 min_degree = 4;
+    uint32 max_degree = 5;
+}
+
+// 改变细胞状态
+message ChangeCellStaus{
+    Request request = 1;
+    uint32 met_id = 2;
+    CellStaus.Enum staus = 3;
+}
+
+// 重置所有细胞状态
+message ResetAllCells{
+    Request request = 1;
+    CellStaus.Enum staus = 2;
+}
+
+// 想定初始化
+message ScenarioInit{
+    Request request = 1;
+
+    uint32 cell_x = 2; // 规模x
+    uint32 cell_y = 3; // 规模y
+}
+
+message DimensionsChanged{
+    uint32 cell_x = 1;
+    uint32 cell_y = 2;
+}

@@ -1,0 +1,21 @@
+syntax = "proto3";
+package net.phoneyou.lulu.bb.descriptor;
+
+import "amster/gbbinfra/DescriptorOptions.proto";
+
+message Statistics{
+    option (amster.gbbinfra.descriptor_type) = 2001;
+    option (amster.gbbinfra.singleton) = true ;
+
+    int32 summation_cnt = 1; // 被感染数
+    int32 death_cnt = 2; // 接触感染
+    int32 survival_cnt = 3; // 易感染数
+}
+
+message Dimensions{
+    option (amster.gbbinfra.descriptor_type) = 2002;
+    option (amster.gbbinfra.singleton) = true ;
+
+    uint32 cell_x = 1;
+    uint32 cell_y = 2;
+}

@@ -6,5 +6,11 @@
         <file>config/standalone.json</file>
         <file>config/standalone_master.json</file>
         <file>config/standalone_slaver.json</file>
+        <file>i18n/show_zh_CN.ts</file>
+        <file>i18n/show_zh_CN.qm</file>
+    </qresource>
+    <qresource prefix="/img">
+        <file>logo.ico</file>
+        <file>logo.png</file>
     </qresource>
 </RCC>

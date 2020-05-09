@@ -1,0 +1,10 @@
+AMSTER_LIB_NAME = LULUBBQt
+
+AMSTER_LIB_DEPENDS += \
+    amsterqt \
+
+win32{
+    DEFINES += LULUQT_GENERATOR_DLLEXPORT=__declspec(dllimport)
+}else{
+    DEFINES += LULUQT_GENERATOR_DLLEXPORT=
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package net.phoneyou.lulu.bb.entity;
+
+import "amster/gbbinfra/EntityOptions.proto";
+import "amster/bb/Entities.proto";
+
+
+import "net/phoneyou/lulu/bb/Descriptors.proto";
+
+message Cell{
+    option (amster.gbbinfra.entity_type) = 101;
+    amster.bb.entity.EntityObject __EntityObject__ = 1;
+
+    descriptor.Position pos = 2;
+    descriptor.CellInfo info = 3;
+}

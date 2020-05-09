@@ -1,10 +1,10 @@
-URI = net.phoneyou.COVID19.BB
+URI = net.phoneyou.LULU.BB
 
 API_VER = 1.0
 
 TEMPLATE = lib
 
-TARGET = covid19bbplugin
+TARGET = lulubbplugin
 
 QMLFILES += $$PWD/qmldir \
 
@@ -28,5 +28,5 @@ include($$(PPM_HOME)/ppm.pri)
 AMSTER_LIB_DIRS += $$PWD/../../
 IMPORT_PROTOS_QT_GENERATED = 1
 include($$PWD/../../../../amster-config.pri)
-AMSTER_LIB_DEPENDS += covid19bb_qt
+AMSTER_LIB_DEPENDS += lulubb_qt
 include($$AMSTERFWK_SRC_DIR/qmlpluginconfig.pri)

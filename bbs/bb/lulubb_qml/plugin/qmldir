@@ -1,0 +1,4 @@
+module net.phoneyou.LULU.BB
+plugin lulubbplugin
+typeinfo plugins.qmltypes
+

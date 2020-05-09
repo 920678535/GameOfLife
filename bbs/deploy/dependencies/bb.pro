@@ -9,8 +9,8 @@ STATIC_INSTALL_BASE = $$AMSTER_INSTALL_INCLUDE_PATH/libs
 
 
 DATA_DIRS = \
-    covid19bb \
-    covid19bb_qt \
+    lulubb \
+    lulubb_qt \
 
 for(data_dir, DATA_DIRS) {
     STATIC_FILES += $$files($$STATIC_BASE/$$data_dir/*_dependencies.pri, true)
